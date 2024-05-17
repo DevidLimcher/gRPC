@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package social_network;
+
+message Post {
+  string id = 1;
+  string user = 2;
+  string content = 3;
+  int32 likes = 4;
+  repeated Comment comments = 5;
+}
+
+message Comment {
+  string user = 1;
+  string content = 2;
+}
+
+message CreatePostRequest {
+  string user = 1;
+  string content = 2;
+}
+
+message CreatePostResponse {
+  Post post = 1;
+}
+
+message GetFeedRequest {
+  string user = 1;
+}
+
+message GetFeedResponse {
+  repeated Post posts = 1;
+}
+
+message LikePostRequest {
+  string post_id = 1;
+  string user = 2;
+}
+
+message LikePostResponse {
+  Post post = 1;
+}
+
+message CommentPostRequest {
+  string post_id = 1;
+  string user = 2;
+  string content = 3;
+}
+
+message CommentPostResponse {
+  Post post = 1;
+}
+
+service SocialNetwork {
+  rpc CreatePost(CreatePostRequest) returns (CreatePostResponse);
+  rpc GetFeed(GetFeedRequest) returns (GetFeedResponse);
+  rpc LikePost(LikePostRequest) returns (LikePostResponse);
+  rpc CommentPost(CommentPostRequest) returns (CommentPostResponse);
+}
