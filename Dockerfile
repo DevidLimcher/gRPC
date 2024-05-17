@@ -10,8 +10,8 @@ COPY . /app
 # Install the dependencies
 RUN pip install -r requirements.txt
 
-# Make port 50051 available to the world outside this container
-EXPOSE 50051
+# Make port 10000 available to the world outside this container
+EXPOSE 10000
 
 # Run the server
 CMD ["python", "social_network_server.py"]
