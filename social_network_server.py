@@ -40,7 +40,7 @@ class SocialNetworkServicer(social_network_pb2_grpc.SocialNetworkServicer):
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     social_network_pb2_grpc.add_SocialNetworkServicer_to_server(SocialNetworkServicer(), server)
-    port = os.environ.get('PORT', '50051')
+    port = os.environ.get('PORT', '10000')
     server.add_insecure_port(f'[::]:{port}')
     server.start()
     server.wait_for_termination()
